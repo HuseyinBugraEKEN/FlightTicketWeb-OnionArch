@@ -1,0 +1,37 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "Angular Frontend Debug",
+      "type": "chrome",
+      "request": "launch",
+      "url": "http://localhost:4200",
+      "webRoot": "${workspaceFolder}/src/Presentation/frontend",
+      "sourceMaps": true,
+      "sourceMapPathOverrides": {
+        "webpack:///src/*": "${webRoot}/src/*"
+      }
+    },
+    {
+      "name": "Presentation Debug",
+      "type": "coreclr",
+      "request": "launch",
+      "program": "${workspaceFolder}/src/Presentation/bin/Debug/net8.0/Presentation.dll",
+      "args": [],
+      "cwd": "${workspaceFolder}/src",
+      "stopAtEntry": false,
+      "env": {
+        "ASPNETCORE_ENVIRONMENT": "Development"
+      },
+      "sourceFileMap": {
+        "/Views": "${workspaceFolder}/src/Views"
+      }
+    }
+  ],
+  "compounds": [
+    {
+      "name": "Full Stack Debug",
+      "configurations": ["Angular Frontend Debug", "Presentation Debug"]
+    }
+  ]
+}

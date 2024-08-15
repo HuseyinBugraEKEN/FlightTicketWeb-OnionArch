@@ -1,0 +1,19 @@
+<!--
+Kullanıcıların belirli bir uçuşun detaylarını görmesini ve uçuş satın almasını sağlar. 
+Kullanıcı admin değilse, uçuş satın alma düğmesi gösterilir.
+-->
+
+<div *ngIf="flight">
+<!--Eğer 'flight' nesnesi tanımlı ise, uçuş bilgilerini göster-->
+  <h2>Flight Details</h2>
+  <p><strong>Departure:</strong> {{ flight.departure }}</p>
+  <p><strong>Arrival:</strong> {{ flight.arrival }}</p>
+  <p><strong>Date:</strong> {{ flight.date | date: 'yyyy-MM-dd' }}</p>
+  <p><strong>Time:</strong> {{ flight.time }}</p>
+  <p><strong>Capacity:</strong> {{ flight.capacity }}</p>
+  <p><strong>Price:</strong> {{ flight.price }}</p>
+  <button *ngIf="!isAdmin()" (click)="buyFlight()">Buy</button>
+  <!--Kullanıcı admin değilse, uçuş satın alma butonunu göster-->
+  <button (click)="cancel()">Cancel</button>
+  <!--İptal butonu, kullanıcıyı uçuş filtreleme sayfasına yönlendir-->
+</div>

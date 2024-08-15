@@ -1,0 +1,29 @@
+<!--
+kullanıcının satın aldığı uçuşları listeler ve iptal 
+etme işlevselliği sağlar. Kullanıcı, uçuşu iptal ettiğinde, 
+uçuş listesi güncellenir.
+-->
+
+<div *ngIf="flights.length > 0">
+<!--dizisi boş değilse, uçuşları listeler.-->
+    <h2>My Flights</h2>
+    <ul>
+      <li *ngFor="let flight of flights">
+      <!--Her uçuşu listeler ve detaylarını gösterir.-->
+        <strong>Departure:</strong> {{ flight.departure }} <br>
+        <strong>Arrival:</strong> {{ flight.arrival }} <br>
+        <strong>Date:</strong> {{ flight.date | date: 'yyyy-MM-dd' }} <br>
+        <!--Uçuş bilgilerini gösterir. DatePipe kullanılarak tarih formatlanır.-->
+        <strong>Time:</strong> {{ flight.time }} <br>
+        <strong>Capacity:</strong> {{ flight.capacity }} <br>
+        <strong>Price:</strong> {{ flight.price }} <br>
+        <button (click)="cancelFlight(flight.flightId)">Cancel</button>
+        <!--uçuş iptal butonu-->
+        <hr>
+      </li>
+    </ul>
+  </div>
+  <div *ngIf="flights.length === 0">
+    <p>No flights available.</p>
+  </div>
+  

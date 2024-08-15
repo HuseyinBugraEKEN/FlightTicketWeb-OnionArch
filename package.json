@@ -1,0 +1,12 @@
+{
+    "scripts": {
+      "start": "concurrently \"npm run backend\" \"npm run frontend\"",
+      "backend": "cd ./src/Presentation/ && dotnet run",
+      "frontend": "cd ./src/Presentation/frontend/src/app/ && ng serve"
+    },
+  
+  "devDependencies": {
+    "concurrently": "^8.2.2"
+  }
+
+}

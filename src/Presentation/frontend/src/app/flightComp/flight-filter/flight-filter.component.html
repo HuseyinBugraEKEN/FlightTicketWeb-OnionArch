@@ -1,0 +1,45 @@
+<!--
+kullanıcıların belirli kriterlere göre uçuşları aramasını ve sonuçları 
+görüntülemesini sağlar. Kullanıcı, bir uçuşu seçip detaylarını 
+görüntüleyebilir ve satın alma işlemini başlatabilir.
+-->
+
+<div class="flight-filter">
+    <h2>Filter Flights</h2>
+    <form (ngSubmit)="onSubmit()">
+      <div>
+        <label for="departure">Departure:</label>
+        <input id="departure" [(ngModel)]="filter.departure" name="departure" required>
+      </div>
+      <div>
+        <label for="arrival">Arrival:</label>
+        <input id="arrival" [(ngModel)]="filter.arrival" name="arrival" required>
+      </div>
+      <div>
+        <label for="date">Date:</label>
+        <input id="date" type="date" [(ngModel)]="filter.date" name="date" required>
+      </div>
+      <div>
+        <label for="passengers">Capacity:</label>
+        <input id="passengers" type="number" [(ngModel)]="filter.passengers" name="passengers" required>
+      </div>
+      <button type="submit">Search</button>
+    </form>
+    <div *ngIf="flights.length > 0">
+    <!--Eğer flights dizisi boş değilse, bulunan uçuşları listeler.-->
+      <h3>Flights Found</h3>
+      <ul>
+        <li *ngFor="let flight of flights">
+        <!--Her uçuşu listeler ve detaylarını gösterir.-->
+          {{ flight.departure }} - {{ flight.arrival }} ({{ flight.date | date: 'yyyy-MM-dd' }}) - {{ flight.time }} - {{ flight.price }} TL
+          <button (click)="selectFlight(flight)">Buy</button>
+          <!--Belirli bir uçuşu seçmek ve satın alma işlemi başlatmak için düğme.-->
+        </li>
+      </ul>
+    </div>
+    <div *ngIf="flights.length === 0 && submitted">
+    <!--Eğer flights dizisi boşsa ve form gönderildiyse, mesajı gösterir.-->
+      <p>No flights found.</p>
+    </div>
+  </div>
+  

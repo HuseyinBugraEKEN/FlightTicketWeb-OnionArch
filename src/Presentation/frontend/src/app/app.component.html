@@ -1,0 +1,40 @@
+<!--
+uygulamanın ana navigasyon menüsünü ve kullanıcı oturum yönetimini içerir. 
+Kullanıcı giriş yapıp yapmadığına ve rolüne bağlı olarak farklı 
+bağlantılar ve butonlar görüntülenir veya gizlenir.
+-->
+
+<nav>
+<!--Uygulamanın ana navigasyon menüsünü içerir.-->
+  <a class="nav-link" routerLink="/">Home</a>
+  <!--Ana sayfaya yönlendiren bağlantı.-->
+
+  <a class="nav-link" *ngIf="isAdmin()" routerLink="/add">Add Flight</a>
+  <!--Sadece admin kullanıcılar için görünen ve uçuş ekleme sayfasına yönlendiren bağlantı.-->
+
+  <a class="nav-link" *ngIf="!isLoggedIn()" routerLink="/login">Login</a>
+  <!--Giriş yapmamış kullanıcılar için görünen ve giriş sayfasına yönlendiren bağlantı.-->
+
+  <a class="nav-link" *ngIf="!isLoggedIn()" routerLink="/register">Register</a>
+  <!--Giriş yapmamış kullanıcılar için görünen ve kayıt sayfasına yönlendiren bağlantı.-->
+
+  <a class="nav-link" *ngIf="isLoggedIn() && !isAdmin()" routerLink="/filter">Filter Flights</a>
+  <!--Giriş yapmış ancak admin olmayan kullanıcılar için görünen ve uçuş filtreleme sayfasına yönlendiren bağlantı.-->
+
+  <a class="nav-link" *ngIf="isLoggedIn() && !isAdmin()" routerLink="/my-flights">My Flights</a>
+  <!--Giriş yapmış ancak admin olmayan kullanıcılar için görünen ve kullanıcıya ait uçuşları gösteren sayfaya yönlendiren bağlantı.-->
+
+  <button class="nav-link" *ngIf="isLoggedIn()" (click)="logout()">Logout</button>
+  <!--Giriş yapmış kullanıcılar için görünen ve kullanıcıyı oturumdan çıkaran düğme.-->
+</nav>
+<div *ngIf="isLoggedIn()">
+<!--Giriş yapmış kullanıcılar için görünen, kullanıcının adını gösteren mesaj-->
+  Welcome, {{ getUsername() }}!
+</div>
+<router-outlet></router-outlet>
+<!--Yönlendirme yapılacak bileşenlerin yerleştirildiği yer. 
+Farklı yollarla eşleşen bileşenler burada görüntülenir.
+
+div *ngIf : koşullu görünürlük
+Angular'ın routerLink direktifi kullanılarak bağlantılar, belirli bileşenlere yönlendirilir. 
+Bu, SPA (Single Page Application) yapısına uygun olarak sayfa yeniden yüklemesi olmadan navigasyonu sağlar.-->

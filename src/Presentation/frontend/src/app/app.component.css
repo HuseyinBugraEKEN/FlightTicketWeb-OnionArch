@@ -1,0 +1,29 @@
+nav {
+    display: flex;
+    gap: 10px; /* Boşluk miktarını buradan ayarlayabilirsiniz */
+  }
+  
+  .nav-link {
+    text-decoration: none;
+    color: inherit;
+    padding: 5px 10px;
+    border-radius: 4px;
+  }
+  
+  .nav-link:hover {
+    background-color: #d8f9ca; /* Hover rengi buradan ayarlayabilirsiniz */
+    /*hrs*/
+  }
+  
+  button.nav-link {
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 5px 10px;
+    border-radius: 4px;
+  }
+  
+  button.nav-link:hover {
+    background-color: #ffcece; /* Hover rengi buradan ayarlayabilirsiniz */
+  }
+  

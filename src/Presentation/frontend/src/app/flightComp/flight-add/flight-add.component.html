@@ -1,0 +1,41 @@
+<!--
+yeni uçuşların eklenmesini sağlayan bir kullanıcı arayüzü sunar. 
+Kullanıcı formu doldurup gönderdiğinde, FlightService aracılığıyla 
+uçuş bilgileri sunucuya gönderilir ve kullanıcı ana sayfaya yönlendirilir.
+
+ngModel: Angular'ın veri bağlama (data binding) direktifi,
+form girdilerini flight nesnesindeki ilgili özellikle bağlar
+
+ngSubmit: Form gönderildiğinde onSubmit() metodunu çağırır
+-->
+
+<div class="flight-add">
+  <h2>Add Flight</h2>
+  <form (ngSubmit)="onSubmit()">
+    <div>
+      <label for="departure">Departure:</label>
+      <input id="departure" [(ngModel)]="flight.departure" name="departure" required>
+    </div>
+    <div>
+      <label for="arrival">Arrival:</label>
+      <input id="arrival" [(ngModel)]="flight.arrival" name="arrival" required>
+    </div>
+    <div>
+      <label for="date">Date:</label>
+      <input id="date" type="date" [(ngModel)]="flight.date" name="date" required>
+    </div>
+    <div>
+      <label for="time">Time:</label>
+      <input id="time" type="time" [(ngModel)]="flight.time" name="time" required>
+    </div>
+    <div>
+      <label for="capacity">Capacity:</label>
+      <input id="capacity" type="number" [(ngModel)]="flight.capacity" name="capacity" required>
+    </div>
+    <div>
+      <label for="price">Price:</label>
+      <input id="price" type="number" [(ngModel)]="flight.price" name="price" required>
+    </div>
+    <button type="submit">Add</button>
+  </form>
+</div>

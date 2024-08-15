@@ -1,0 +1,34 @@
+<!--
+kullanıcıların sisteme kayıt olmasını sağlar. Kullanıcı formu 
+doldurup gönderdiğinde, AuthService aracılığıyla kayıt işlemi 
+yapılır ve başarılı olursa kullanıcı giriş sayfasına yönlendirilir. 
+Hata durumunda, hata mesajı kullanıcıya gösterilir.
+-->
+
+<div class="register">
+  <h2>Register</h2>
+  <form (ngSubmit)="onSubmit()">
+    <div>
+      <label for="username">Username:</label>
+      <input id="username" [(ngModel)]="registerData.username" name="username" required>
+      <!--form girdilerini registerData nesnesindeki ilgili özelliklere bağlar.-->
+    </div>
+    <div>
+      <label for="password">Password:</label>
+      <input id="password" type="password" [(ngModel)]="registerData.password" name="password" required>
+    </div>
+    <div>
+      <label for="email">Email:</label>
+      <input id="email" type="email" [(ngModel)]="registerData.email" name="email" required>
+    </div>
+    <button type="submit">Register</button>
+  </form>
+  <div *ngIf="successMessage" class="success-message">
+  <!--Eğer successMessage tanımlı ise, başarılı kayıt mesajını gösterir.-->
+    {{ successMessage }}
+  </div>
+  <div *ngIf="errorMessage" class="error-message">
+  <!--Eğer errorMessage tanımlı ise, hata mesajını gösterir.-->
+    {{ errorMessage }}
+  </div>
+</div>

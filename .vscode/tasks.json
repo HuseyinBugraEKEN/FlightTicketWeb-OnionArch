@@ -1,0 +1,39 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+      {
+        "label": "ng serve",
+        "type": "shell",
+        "command": "npm",
+        "args": [
+          "run",
+          "start"
+        ],
+        "options": {
+          "cwd": "${workspaceFolder}/src/Presentation/frontend"
+        },
+        "problemMatcher": [],
+        "isBackground": true,
+        "presentation": {
+          "reveal": "always",
+          "focus": false,
+          "panel": "shared"
+        },
+        "group": {
+          "kind": "build",
+          "isDefault": true
+        }
+      },
+      {
+        "label": "build",
+        "command": "dotnet",
+        "type": "process",
+        "args": [
+          "build",
+          "${workspaceFolder}/src/Presentation/Presentation.csproj"
+        ],
+        "problemMatcher": "$msCompile"
+      }
+    ]
+  }
+  
